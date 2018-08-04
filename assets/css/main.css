@@ -2022,7 +2022,6 @@ input, select, textarea {
 
 		.icon:before {
 			display: inline-block;
-			font-family: FontAwesome;
 			font-size: 1.25em;
 			text-decoration: none;
 			font-style: normal;
