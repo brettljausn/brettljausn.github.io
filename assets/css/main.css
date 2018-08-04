@@ -30,6 +30,24 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+/* added by me */
+
+div.intext {
+    margin-left: auto;
+    margin-right: auto;
+    display: table;
+}
+ul.intext {
+    text-align: left;
+}
+
+img.reactionator {
+  max-width:50%;
+  max-height:50%;
+}
+
+/* end of added by me*/
+
 body {
 	line-height: 1;
 }

@@ -1,0 +1,157 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Felix Lechleitner</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link href="assets/css/all.css" rel="stylesheet">
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-123337274-1"></script>
+		<script>
+  			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+
+  			gtag('config', 'UA-123337274-1');
+		</script>
+
+		<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+	</head>
+
+	<body class="is-preload">
+
+		<!-- Header -->
+			<div id="header">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="http://github.com/brettljausn.png" alt="" /></span>
+							<h1 id="title">Felix Lechleitner</h1>
+							<p>Chemical Engineer</p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#theory" id="top-link"><span class="icon fa-book">Reactionator - Theory</span></a></li>
+								<br>
+								<li><a href="index.html#top" id="top-link"><span class="icon fa-home">Intro</span></a></li>
+								<li><a href="index.html#projects" id="projects-link"><span class="icon fa-th">Projects</span></a></li>
+								<li><a href="index.html#about" id="about-link"><span class="icon fa-user">About Me</span></a></li>
+								<li><a href="index.html#contact" id="contact-link"><span class="icon fa-envelope">Contact</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="https://stackoverflow.com/users/3052148/brettljausn" class="icon fa-stack-overflow"><span class="label">Stack Overflow</span></a></li>
+							<li><a href="https://www.facebook.com/felix.lechleitner" class="icon far fa-facebook"><span class="label">Facebook</span></a></li>
+							<li><a href="https://github.com/brettljausn" class="icon fa-github"><span class="label">Github</span></a></li>
+							<li><a href="https://www.linkedin.com/in/felix-lechleitner/" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="mailto:flx.lechleitner@gmail.com" class="icon fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+				<h2 align="center">REACTIONATOR</h2>
+					<section id="theory" class="two">
+						<div class="container">
+							<header>
+								<h3>Theoretical Background</h3>
+							</header>
+							<p style="text-align:justify">
+								The calculation algorithm is derived from
+								the chemical reaction network theory. Consider the following chemical reaction network:<br></p>
+								<p>
+								<img src="images/reaction-net.png" align="middle" alt="chemical reaction network example"><br>
+								<br>
+								It is defined by:
+								<div id="wrapper" class="intext">
+							    <div id="content" class="intext">
+							        <div id="listDiv" class="intext">
+							            <ul class="intext"><li>a set of species $\mathcal{S} = \{A, B, C, D, E\}$</li>
+													<li>a set of complexes $\mathcal{C} =  \{A, B, A + C, D, B + E\}$</li>
+													<li>a set of reactions $\mathcal{R} =  \{A \rightarrow B, B \rightarrow A, A + C \rightarrow D, ...\}$</li>
+							            </ul>
+							        </div>
+							    </div>
+								</div>
+						</p>
+						<p style="text-align:justify">
+							Based on the species in a complex and their corresponding stoichioemtric factors we can define vectors. Consider the reaction $A + C \rightarrow D$. We make the following associations:</p>
+							<p>
+							$$y = A + C = \begin{pmatrix}1\\0\\1\\0\\0\end{pmatrix}$$ and $$y' = D = \begin{pmatrix}0\\0\\0\\1\\0\end{pmatrix}$$
+
+						</p>
+
+
+
+						</div>
+					</section>
+
+				<!-- About Me -->
+					<section id="dummy" class="three">
+						<div class="container">
+
+							<header>
+								<h2>placeholder</h2>
+							</header>
+
+							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+
+						</div>
+					</section>
+
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Felix Lechleitner. All rights reserved.</li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
