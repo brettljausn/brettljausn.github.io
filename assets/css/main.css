@@ -32,6 +32,12 @@ footer, header, hgroup, menu, nav, section {
 
 /* added by me */
 
+.bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
 div.intext {
     margin-left: auto;
     margin-right: auto;
@@ -107,7 +113,7 @@ input, select, textarea {
 		font-size: 19pt;
 		font-weight: 300;
 		line-height: 1.75em;
-		color: #888;
+		color: #000;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -131,7 +137,7 @@ input, select, textarea {
 
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 300;
-		color: #666;
+		color: #000;
 		line-height: 1.5em;
 	}
 
@@ -150,11 +156,11 @@ input, select, textarea {
 	}
 
 		h2.alt {
-			color: #888;
+			color: #d5d5d5;
 		}
 
 			h2.alt strong {
-				color: #666;
+				color: #fff;
 			}
 
 	h3 {
@@ -185,7 +191,7 @@ input, select, textarea {
 	a {
 		text-decoration: none;
 		color: inherit;
-		border-bottom: dotted 1px rgba(128, 128, 128, 0.5);
+		border-bottom: solid 1px rgba(128, 128, 128, 0.5);
 		-moz-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-webkit-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-ms-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
@@ -2011,7 +2017,7 @@ input, select, textarea {
 		}
 
 			.item header h3 {
-				font-size: 1em;
+				font-size: 1.25em;
 			}
 
 /* Icons */
@@ -2174,7 +2180,7 @@ input, select, textarea {
 				}
 
 					#nav ul li a.active span:before {
-						color: #e27689;
+						color: #5c3fff;
 					}
 
 /* Footer */
@@ -2227,7 +2233,7 @@ input, select, textarea {
 				color: rgba(255, 255, 255, 0.75);
 			}
 
-				#main > section.dark h2, #main > section.dark h3, #main > section.dark h4, #main > section.dark h5, #main > section.dark h6 {
+				#main > section.dark h3, #main > section.dark h4, #main > section.dark h5, #main > section.dark h6 {
 					color: inherit;
 				}
 
@@ -2254,7 +2260,10 @@ input, select, textarea {
 			#main > section.one {
 				background-color: #81918E;
 				background-image: url("../../images/banner.jpg");
+				background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 100%), url("../../images/banner.jpg");
 			}
+
+
 
 			#main > section.two {
 				background-color: #f5fafa;
@@ -2400,7 +2409,7 @@ input, select, textarea {
 			}
 
 			header br {
-				display: none;
+				/*display: none;*/
 			}
 
 			.container {
