@@ -83,7 +83,7 @@ function submit_answer() {
             var player_name = prompt("Your final score is " + score + ". Please enter your name", "Harry Potter");
             console.log(player_name);
             console.log(score);
-            if (player_name && !player_name.trim()) {
+            if (player_name != "") {
               $.ajax({
                  url : 'https://brettljausn.000webhostapp.com/submit_score.php', // your php file
                  type : 'POST', // type of the HTTP request
@@ -98,7 +98,7 @@ function submit_answer() {
 
             location.reload();
 
-          }, 50);
+          }, 150);
           }
 
           document.getElementById("strikes").innerHTML = "Wrong answers allowed: " + (3-strikes);
