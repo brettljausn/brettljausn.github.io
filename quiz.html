@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>title</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
   </head>
   <body>
     <h1>JS-Quiz</h1>
@@ -20,17 +20,25 @@
       <label id="label_d" for="answer_d"></label>
     </fieldset>
 
-    <button onclick="myFunction()">Submit answer!</button>
+    <button onclick="submit_answer()">Submit answer!</button>
 
     <p id="display_answer"></p>
 
     <p id="score"></p>
     <p id="strikes"></p>
+    <table id ="scoretable"></table>
+
+
+
+
+
 
 
 
 
   </body>
+  <script src="dist/jquery-3.3.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/json2html/1.2.0/json2html.min.js"></script>
   <script src="dist/notify.js"></script>
   <script src="quiz.js"></script>
 
