@@ -42,8 +42,15 @@ $.ajax({
    }
 });
 
+var questions = eval("[[\"This drink contains caffeine.\", \"Coffee\", \"Mineral water\", \"Orange juice\", \"Coffee\", \"Beer\"],[\"Finish the proverb:\\r\\n\\r\\nPoets are born, ________.\", \"...not made.\", \"...not made.\", \"...but can also be made.\", \"...but thats not for sure.\", \"..., long live the poets!\"]]");
 
-var questions = eval("[[\"This drink contains caffeine.\", \"Coffee\", \"Mineral water\", \"Orange juice\", \"Coffee\", \"Beer\"], [\"Finish the proverb:\\r\\n\\r\\nPoets are born, ________.\", \"...not made.\", \"...not made.\", \"...but can also be made.\", \"...but thats not for sure.\", \"..., long live the poets!\"], [\"If a TV program is rated G then this is true.\", \"It is suitable for all audiences.\", \"It contains moderate violence.\", \"It contains mild sexual situations.\", \"It is suitable for all audiences.\", \"It is suitable for young children.\"], [\"The theory of relativity was introduced in physics by this man.\", \"Albert Einstein\", \"Galileo Galilei\", \"Albert Einstein\", \"Archimedes\", \"Isaac Newton\"], [\"The symbol for the chemical element iron is this.\", \"Fe\", \"I\", \"Fe\", \"Zn\", \"Br\"], [\"The author of the novel A Portrait of the Artist as a Young Man is this writer.\", \"James Joyce\", \"T. S. Eliot\", \"Samuel Beckett\", \"William Faulkner\", \"James Joyce\"], [\"The capital of Mongolia is this city.\", \"Ulaanbaatar\", \"Davao\", \"Islamabad\", \"Quezon\", \"Ulaanbaatar\"], [\"Mitochondrias function in cells is to perform this.\", \"To convert organic materials into energy\", \"To control chemical reactions within the cytoplasm\", \"To store information needed for cellular division\", \"To convert organic materials into energy\", \"To process proteins targeted to the plasma membrane\"], [\"The US bought Alaska in this year.\", \"1867\", \"1942\", \"1882\", \"1854\", \"1867\"], [\"The 23rd US President was in office during this period.\", \"1889 - 1893\", \"1909 - 1913\", \"1889 - 1893\", \"1837 - 1841\", \"1877 - 1881\"], [\"One of these actors did not star in the 1971 movie A Clockwork Orange.\", \"Warren Brown\", \"Michael Bates\", \"Patrick Magee\", \"Warren Brown\", \"Malcolm McDowell\"], [\"The first Bulgarian state was formed in this year.\", \"681 AD\", \"429 AD\", \"681 AD\", \"712 AD\", \"651 AD\"], [\"The 1962 Soccer World Cup tournament was held in this country.\", \"Chile\", \"Switzerland\", \"Mexico\", \"Chile\", \"Italy\"]]")
+$.get('https://brettljausn.000webhostapp.com/q_general.txt', function(data) {
+   console.log(data);
+   questions = eval(data);
+}, 'text');
+
+// var questions = eval("[[\"This drink contains caffeine.\", \"Coffee\", \"Mineral water\", \"Orange juice\", \"Coffee\", \"Beer\"], [\"Finish the proverb:\\r\\n\\r\\nPoets are born, ________.\", \"...not made.\", \"...not made.\", \"...but can also be made.\", \"...but thats not for sure.\", \"..., long live the poets!\"], [\"If a TV program is rated G then this is true.\", \"It is suitable for all audiences.\", \"It contains moderate violence.\", \"It contains mild sexual situations.\", \"It is suitable for all audiences.\", \"It is suitable for young children.\"], [\"The theory of relativity was introduced in physics by this man.\", \"Albert Einstein\", \"Galileo Galilei\", \"Albert Einstein\", \"Archimedes\", \"Isaac Newton\"], [\"The symbol for the chemical element iron is this.\", \"Fe\", \"I\", \"Fe\", \"Zn\", \"Br\"], [\"The author of the novel A Portrait of the Artist as a Young Man is this writer.\", \"James Joyce\", \"T. S. Eliot\", \"Samuel Beckett\", \"William Faulkner\", \"James Joyce\"], [\"The capital of Mongolia is this city.\", \"Ulaanbaatar\", \"Davao\", \"Islamabad\", \"Quezon\", \"Ulaanbaatar\"], [\"Mitochondrias function in cells is to perform this.\", \"To convert organic materials into energy\", \"To control chemical reactions within the cytoplasm\", \"To store information needed for cellular division\", \"To convert organic materials into energy\", \"To process proteins targeted to the plasma membrane\"], [\"The US bought Alaska in this year.\", \"1867\", \"1942\", \"1882\", \"1854\", \"1867\"], [\"The 23rd US President was in office during this period.\", \"1889 - 1893\", \"1909 - 1913\", \"1889 - 1893\", \"1837 - 1841\", \"1877 - 1881\"], [\"One of these actors did not star in the 1971 movie A Clockwork Orange.\", \"Warren Brown\", \"Michael Bates\", \"Patrick Magee\", \"Warren Brown\", \"Malcolm McDowell\"], [\"The first Bulgarian state was formed in this year.\", \"681 AD\", \"429 AD\", \"681 AD\", \"712 AD\", \"651 AD\"], [\"The 1962 Soccer World Cup tournament was held in this country.\", \"Chile\", \"Switzerland\", \"Mexico\", \"Chile\", \"Italy\"]]")
+
 var question_index = Math.floor(Math.random() * questions.length);;
 var score = 0;
 var strikes = 0;
@@ -72,18 +79,21 @@ function submit_answer() {
           score = score - 5;
           strikes = strikes + 1;
 
-          if(strikes == 3){
+          if(strikes == 4){
             var player_name = prompt("Your final score is " + score + ". Please enter your name", "Harry Potter");
             console.log(player_name);
             console.log(score);
-            $.ajax({
-               url : 'https://brettljausn.000webhostapp.com/submit_score.php', // your php file
-               type : 'POST', // type of the HTTP request
-               data: {
-                 'name' : player_name,
-                 'score': score,
-               }
-            });
+            if (player_name && !player_name.trim()) {
+              $.ajax({
+                 url : 'https://brettljausn.000webhostapp.com/submit_score.php', // your php file
+                 type : 'POST', // type of the HTTP request
+                 data: {
+                   'name' : player_name,
+                   'score': score,
+                 }
+              });
+            }
+
             setTimeout(function (){
 
             location.reload();
