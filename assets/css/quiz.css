@@ -28,6 +28,7 @@ button {
     font-size: 16px;
     margin-top: 5px;
     margin-bottom: 30px;
+    width: 400px;
 }
 
 * {
@@ -36,9 +37,9 @@ button {
 
 body {
     background-image: url("../../images/question_block-min.png");
-    background-image: linear-gradient(to bottom, rgba(255,255,255,0.75) 0%,rgba(255,255,255,0.75) 100%), url("../../images/question_block-min.png");
-    background-size:     cover;                      /* <------ */
-    background-repeat:   repeat;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.5) 100%), url("../../images/question_block-min.png");
+    background-size:     25% auto;                      /* <------ */
+    background-repeat: repeat;
     background-position: center center;              /* optional, center the image */
 }
 
