@@ -108,12 +108,9 @@ html{
   min-height: 100%;
 }
 /*Normalize html and body elements,this style is just good to have*/
-html,body{
-  margin:0;
-  padding:0;
-}
+
 .pageContentWrapper{
-  margin-bottom:200px;/* Height of footer*/
+  padding-bottom:200px;/* Height of footer*/
 }
 .footer{
 
