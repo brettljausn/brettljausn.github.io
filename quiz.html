@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>title</title>
+    <link rel="stylesheet" href="assets/css/quiz.css" />
+    <title>Brettljausn JS-Quiz</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
   </head>
   <body>
@@ -10,31 +11,43 @@
 
     <fieldset>
       <p id="question"></p>
-      <input type="radio" id="answer_a" value="a" name="answer">
-      <label id="label_a" for="answer_a"></label><br>
+      <!-- <input type="radio" id="answer_aa" value="a" name="answer">
+      <label id="label_aa" for="answer_a"></label><br>
       <input type="radio" id="answer_b" value="b" name="answer">
-      <label id="label_b" for="answer_b"></label><br>
+      <label id="label_bb" for="answer_b"></label><br>
       <input type="radio" id="answer_c" value="c" name="answer">
       <label id="label_c" for="answer_c"></label><br>
       <input type="radio" id="answer_d" value="d" name="answer">
-      <label id="label_d" for="answer_d"></label>
+      <label id="label_d" for="answer_d"></label> -->
+
+    <label class="container"><p id="label_a" class = "answer"></p>
+  <input type="radio" name="answer" id="answer_a" value="a">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><p id="label_b" class = "answer"></p>
+  <input type="radio" name="answer" id="answer_b" value="b">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><p id="label_c" class = "answer"></p>
+  <input type="radio" name="answer" id="answer_c" value="c">
+  <span class="checkmark"></span>
+</label>
+
+<label class="container"><p id="label_d" class = "answer"></p>
+  <input type="radio" name="answer" id="answer_d" value="d">
+  <span class="checkmark"></span>
+</label>
     </fieldset>
-
+<div style="text-align:center;">
     <button onclick="submit_answer()">Submit answer!</button>
-
+</div>
     <p id="display_answer"></p>
 
     <p id="score"></p>
     <p id="strikes"></p>
     <table id ="scoretable"></table>
-
-
-
-
-
-
-
-
 
   </body>
   <script src="dist/jquery-3.3.1.js"></script>
