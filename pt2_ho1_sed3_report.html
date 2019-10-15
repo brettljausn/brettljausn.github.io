@@ -2782,7 +2782,7 @@ div.tocify {
 
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">1</span> Introduction</h1>
-<p>This is the report document for the solution of the SED3 problem. The solution is coded in R and the report is written in RMarkdown and compiled to a pdf-document using knitr and . The source code can be found here: <a href="https://drive.google.com/open?id=1P56oicAwnliisodo1QnS7EuYp6by-ycV">Click me!</a></p>
+<p>This is the report document for the solution of the SED3 problem. The solution is coded in R and the report is written in RMarkdown and compiled to a pdf-document using knitr + and to a html-webpage using knitr. The source code can be found here: <a href="https://drive.google.com/open?id=1P56oicAwnliisodo1QnS7EuYp6by-ycV">Click me!</a></p>
 <p>The report as a pdf-file can be found here: <a href="https://felixlechleitner.com/pt2_ho1_sed3_report.pdf">PDF-Report (Hyperlink)</a></p>
 <p>The report as webpage can be found here (code might be easier to read as html): <a href="https://felixlechleitner.com/pt2_ho1_sed3_report.html">HTML-Report (Hyperlink)</a></p>
 <p>Results from code block will be displayed at the end of the respective block.</p>
@@ -2906,6 +2906,7 @@ shape.factor &lt;- 0.68
 u.sed.sphere &lt;- u.sed / shape.factor</code></pre>
 <p><span class="math inline">\(\phi_{\text{shape}}\)</span> = 0.68</p>
 <p><span class="math inline">\(u_{\text{Sphere}}\)</span> = 0.00735294117647059 m s<span class="math inline">\(^{-1}\)</span></p>
+<p> </p>
 <p>Using the sedimentation velocity of the equivalent sphere, we can calculate the Ljašcenko number.</p>
 <pre class="r"><code># calculate Ljašcenko number from corrected u_sed -------------------------
 
@@ -2913,6 +2914,7 @@ Lj &lt;-
   (u.sed.sphere ^ 3 * density.mixture ^ 2) / 
   (dyn.viscosity.mixture * 9.81 * (density.particle - density.mixture))</code></pre>
 <p><span class="math inline">\(\text{L}_{\text{j}}\)</span> = 0.0365008571463289</p>
+<p> </p>
 <p>Based on <span class="math inline">\(\text{L}_{\text{j}}\)</span> we can calculate the Archimedes number and using the definition of said number the particle diameter of the equivalent sphere.</p>
 <pre class="r"><code># calculate Ar based on value of Lj --------------------------------------
 
@@ -2930,8 +2932,9 @@ Ar &lt;- case_when(
 diameter.sphere &lt;-
   ((Ar * dyn.viscosity.mixture ^ 2) / (9.81 * (density.particle - density.mixture) *
                                          density.mixture)) ^ (1 / 3)</code></pre>
-<p>$ = 16.5731043682141</p>
+<p><span class="math inline">\(\text{Ar}\)</span> = 16.5731043682141</p>
 <p><span class="math inline">\(d_{\text{Sphere}}\)</span> = 1.141548e-04 m</p>
+<p> </p>
 <p>The volume of the sphere can now be calculated from the diameter. The volume of the platonic solid needs to have the same volume as the sphere, so we can calculate the edge length of the Tetrahedron by equating the volumina of the two bodies.</p>
 <pre class="r"><code># calculate sphere equivalent volume and edge length ----------------------
 
@@ -2940,6 +2943,7 @@ sphere.volume &lt;- diameter.sphere ^ 3 * pi / 6
 edge.length &lt;- (sphere.volume * 6 * sqrt(2)) ^ (1 / 3)</code></pre>
 <p><span class="math inline">\(V_{\text{Sphere}} = V_{\text{Tetrahedron}}\)</span> = 7.78898528490098e-13 m<span class="math inline">\(^3\)</span></p>
 <p><span class="math inline">\(a_{\text{Tetrahedron}}\)</span> = 1.876646e-04 m</p>
+<p> </p>
 <p>The Reynolds number can be calculated using the diameter of the equivalent sphere or the edge length of the tetrahedron and the actual sedimentation velocity. Furthermore, all values that are needed for the calculation of the forces acting on the particle are known.</p>
 <pre class="r"><code>Re.tetrahedron &lt;-
   edge.length * u.sed * density.particle / dyn.viscosity.mixture
@@ -2955,6 +2959,7 @@ force.drag &lt;- force.gravity - force.buoyancy</code></pre>
 <p><span class="math inline">\(F_{\text{Gravity}}\)</span> = 1.77271073896118e-08 N</p>
 <p><span class="math inline">\(F_{\text{Buoyancy}}\)</span> = 8.3671972851146e-09 N</p>
 <p><span class="math inline">\(F_{\text{Drag}}\)</span> = 9.35991010449724e-09 N</p>
+<p> </p>
 <p>Task 1 is complete.</p>
 </div>
 </div>
@@ -2965,37 +2970,42 @@ force.drag &lt;- force.gravity - force.buoyancy</code></pre>
  u_\text{sed, St} = \frac{d_\text{p} \cdot (\rho_\text{p} - \rho_\text{mixture}) \cdot g}{18\,\eta}
 \end{equation*}\]</span></p>
 <pre class="r"><code>u.sed.stokes &lt;-
-  diameter.sphere ^ 2 * (density.particle - density.mixture) * 9.81 / (18 *
-                                                                         dyn.viscosity.mixture)
+  diameter.sphere ^ 2 * 
+  (density.particle - density.mixture) * 9.81 / (18 * dyn.viscosity.mixture)
+
 Re.stokes &lt;-
   diameter.sphere * u.sed.stokes * density.particle / dyn.viscosity.mixture</code></pre>
 <p><span class="math inline">\(u_{\text{Stokes}}\)</span> = 0.00800491655397925 m s<span class="math inline">\(^{-1}\)</span></p>
 <p><span class="math inline">\(\text{Re}_{\text{Stokes}}\)</span> = 1.95069435308896</p>
+<p> </p>
 <p>However, the Reynolds number we get from this calculation does not indicate creeping flow, so the equation we used can’t be applied in this case.</p>
 <p>We could solve this problem iteratively. We take the Reynolds number from the previous task as starting value, the calculate the correct drag coefficient and the sedimentation velocity from the drag force. with this new velocity we can recalculate the Reynolds number and repeat this process until the change of the Reynolds number between iteration steps is neglible.</p>
 <pre class="r"><code>Re.stokes &lt;- Re.sphere
 
-area.projection.sphere &lt;- diameter.sphere^2 * pi /4
+area.projection.sphere &lt;- diameter.sphere ^ 2 * pi / 4
 iteration.counter &lt;- 0
 
-while(TRUE){
-  
+while (TRUE) {
   drag.coeff &lt;- case_when(
-    Re.stokes &lt;= 0.5 ~ 24/Re.stokes,
-    Re.stokes &gt; 0.5 &amp; Re.stokes &lt;= 10 ~ 27/Re.stokes^0.8,
-    Re.stokes &gt; 10 &amp; Re.stokes &lt;= 120 ~ 17/Re.stokes^0.6,
-    Re.stokes &gt; 120 &amp; Re.stokes &lt;= 1000 ~ 6.5/Re.stokes^0.4,
-    Re.stokes &gt; 1000 &amp; Re.stokes &lt;= 2*10^5 ~ 0.44
+    Re.stokes &lt;= 0.5 ~ 24 / Re.stokes,
+    Re.stokes &gt; 0.5 &amp; Re.stokes &lt;= 10 ~ 27 / Re.stokes ^ 0.8,
+    Re.stokes &gt; 10 &amp; Re.stokes &lt;= 120 ~ 17 / Re.stokes ^ 0.6,
+    Re.stokes &gt; 120 &amp; Re.stokes &lt;= 1000 ~ 6.5 / Re.stokes ^ 0.4,
+    Re.stokes &gt; 1000 &amp; Re.stokes &lt;= 2 * 10 ^ 5 ~ 0.44
     
   )
   
-  u.sed.stokes &lt;- (2*force.drag/(drag.coeff * area.projection.sphere * density.mixture))^0.5
- Re.stokes.previous.it &lt;- Re.stokes
-  Re.stokes &lt;- diameter.sphere*u.sed.stokes*density.mixture/dyn.viscosity.mixture
+  u.sed.stokes &lt;-
+    (2 * force.drag / (drag.coeff * area.projection.sphere * density.mixture)) ^
+    0.5
+  
+  Re.stokes.previous.it &lt;- Re.stokes
+  Re.stokes &lt;-
+    diameter.sphere * u.sed.stokes * density.mixture / dyn.viscosity.mixture
   
   iteration.counter &lt;- iteration.counter + 1
   
-  if(abs(Re.stokes.previous.it - Re.stokes) &lt; 10^-20){
+  if (abs(Re.stokes.previous.it - Re.stokes) &lt; 10 ^ -20) {
     break
   }
   
@@ -3003,7 +3013,8 @@ while(TRUE){
 <p>Calculation converged after 41 iterations.</p>
 <p><span class="math inline">\(u_{\text{Stokes}}\)</span> = 0.00735711955743093 m s<span class="math inline">\(^{-1}\)</span></p>
 <p><span class="math inline">\(\text{Re}_{\text{Stokes}}\)</span> = 0.846218206110681</p>
-<p>This is however not the Stokes sedimentation velocity as we are actually already in the transition regime.</p>
+<p> </p>
+<p>This is however not the Stokes sedimentation velocity as we are actually already in the transition regime. The calculated velocity is the same as the shape corrected sedimentation velocity.</p>
 </div>
 
 
